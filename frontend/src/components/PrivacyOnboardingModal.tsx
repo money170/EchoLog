@@ -8,9 +8,9 @@ export const PrivacyOnboardingModal = ({ open, onAccept }: PrivacyOnboardingModa
   return (
     <div className="overlay">
       <div className="modal card">
-        <h2>Welcome to EchoLog</h2>
+        <h2>Welcome to SpeechJournal</h2>
         <p>
-          Your recordings, transcripts, and notes stay on this device only. EchoLog does not use
+          Your recordings, transcripts, and notes stay on this device only. SpeechJournal does not use
           cloud sync, accounts, or server storage.
         </p>
         <p className="muted">Your data never leaves this device.</p>

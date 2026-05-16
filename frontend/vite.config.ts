@@ -9,8 +9,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'EchoLog',
-        short_name: 'EchoLog',
+        name: 'SpeechJournal',
+        short_name: 'SpeechJournal',
         description: 'Privacy-first voice journaling. Local-only data storage.',
         theme_color: '#0f172a',
         background_color: '#020617',
