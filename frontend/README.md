@@ -1,4 +1,4 @@
-# EchoLog Frontend
+# SpeechLog Frontend
 
 React + TypeScript single-page app for local-first voice journaling.
 
