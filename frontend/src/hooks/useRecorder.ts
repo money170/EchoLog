@@ -9,17 +9,17 @@ export const useRecorder = () => {
   const [waveform, setWaveform] = useState<number[]>(new Array(24).fill(0))
   const [error, setError] = useState<string>()
 
-  const mediaRecorderRef = useRef<MediaRecorder>()
-  const streamRef = useRef<MediaStream>()
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const streamRef = useRef<MediaStream | null>(null)
   const chunksRef = useRef<BlobPart[]>([])
-  const timerRef = useRef<number>()
-  const audioContextRef = useRef<AudioContext>()
-  const analyserRef = useRef<AnalyserNode>()
-  const rafRef = useRef<number>()
+  const timerRef = useRef<number | null>(null)
+  const audioContextRef = useRef<AudioContext | null>(null)
+  const analyserRef = useRef<AnalyserNode | null>(null)
+  const rafRef = useRef<number | null>(null)
 
   const stopVisualizer = () => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current)
-    rafRef.current = undefined
+    rafRef.current = null
   }
 
   const teardown = () => {
@@ -27,7 +27,7 @@ export const useRecorder = () => {
     if (timerRef.current) window.clearInterval(timerRef.current)
     streamRef.current?.getTracks().forEach((t) => t.stop())
     audioContextRef.current?.close()
-    timerRef.current = undefined
+    timerRef.current = null
   }
 
   const tickWaveform = () => {

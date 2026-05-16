@@ -1,18 +1,12 @@
 import { useMemo, useRef, useState } from 'react'
 
-declare global {
-  interface Window {
-    webkitSpeechRecognition?: new () => SpeechRecognition
-  }
-}
-
 export const useTranscription = () => {
   const [liveText, setLiveText] = useState('')
   const [supported, setSupported] = useState(true)
   const [error, setError] = useState<string>()
   const finalRef = useRef('')
-  const recognitionRef = useRef<SpeechRecognition>()
-  const stopTimeoutRef = useRef<number>()
+  const recognitionRef = useRef<SpeechRecognition | null>(null)
+  const stopTimeoutRef = useRef<number | null>(null)
 
   const getConstructor = () =>
     window.SpeechRecognition ?? window.webkitSpeechRecognition ?? undefined
@@ -30,7 +24,7 @@ export const useTranscription = () => {
     recognition.lang = 'en-US'
     recognition.interimResults = true
     recognition.continuous = true
-    recognition.onresult = (event) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       let interim = ''
       for (let i = event.resultIndex; i < event.results.length; i += 1) {
         const text = event.results[i][0].transcript
@@ -39,16 +33,16 @@ export const useTranscription = () => {
       }
       setLiveText(`${finalRef.current}${interim}`.trim())
     }
-    recognition.onerror = (event) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       if (event.error !== 'aborted' && event.error !== 'no-speech') {
         setError('Transcription encountered an issue.')
       }
     }
     recognition.onend = () => {
-      recognitionRef.current = undefined
+      recognitionRef.current = null
       if (stopTimeoutRef.current) {
         window.clearTimeout(stopTimeoutRef.current)
-        stopTimeoutRef.current = undefined
+        stopTimeoutRef.current = null
       }
     }
     recognition.start()
@@ -68,9 +62,9 @@ export const useTranscription = () => {
         done = true
         if (stopTimeoutRef.current) {
           window.clearTimeout(stopTimeoutRef.current)
-          stopTimeoutRef.current = undefined
+          stopTimeoutRef.current = null
         }
-        recognitionRef.current = undefined
+        recognitionRef.current = null
         resolve((finalRef.current || liveText).trim())
       }
       recognition.onend = finalize
