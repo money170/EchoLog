@@ -18,7 +18,7 @@ app.use(morgan('dev'))
 app.get('/health', (_req, res) => {
   res.json({
     ok: true,
-    app: 'SpeechJournal',
+    app: 'SpeechLog',
     environment: process.env.NODE_ENV ?? 'development',
     timestamp: new Date().toISOString(),
   })
@@ -42,5 +42,5 @@ app.use((err: unknown, _req: express.Request, res: express.Response, _next: expr
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`SpeechJournal backend running at http://localhost:${port}`)
+  console.log(`SpeechLog backend running at http://localhost:${port}`)
 })

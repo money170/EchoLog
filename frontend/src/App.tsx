@@ -35,7 +35,7 @@ function App() {
     return (
       <main className="page center-page">
         <section className="card stack-md">
-          <h2>Unlock SpeechJournal</h2>
+          <h2>Unlock SpeechLog</h2>
           <p className="muted">Local passcode required for this browser profile.</p>
           <input
             className="input"
@@ -73,7 +73,7 @@ function App() {
         }}
       />
       <header className="topbar">
-        <strong>SpeechJournal</strong>
+        <strong>SpeechLog</strong>
         <nav>
           {navItems.map((item) => (
             <Link key={item.to} to={item.to}>

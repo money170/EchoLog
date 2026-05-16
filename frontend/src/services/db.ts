@@ -1,7 +1,7 @@
 import { openDB } from 'idb'
 import type { CreateEntryInput, JournalEntry } from '../types/journal'
 
-const DB_NAME = 'speechjournal-db'
+const DB_NAME = 'echolog-db'
 const DB_VERSION = 1
 const ENTRY_STORE = 'entries'
 const AUDIO_STORE = 'audio'

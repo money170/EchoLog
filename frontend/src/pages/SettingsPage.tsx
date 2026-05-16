@@ -16,7 +16,7 @@ export const SettingsPage = ({ isDarkMode, onToggleDarkMode }: SettingsPageProps
       <h1>Privacy & Settings</h1>
       <section className="card stack-md">
         <h3>Privacy</h3>
-        <p>Your data never leaves this device. SpeechJournal is local-only by default.</p>
+        <p>Your data never leaves this device. SpeechLog is local-only by default.</p>
       </section>
 
       <section className="card stack-md">

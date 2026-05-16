@@ -31,7 +31,7 @@ export const DashboardPage = ({ entries }: DashboardPageProps) => {
   return (
     <div className="stack-lg">
       <div className="card gradient">
-        <h1>SpeechJournal</h1>
+        <h1>SpeechLog</h1>
         <p>Private voice journaling for thoughts, meetings, ideas, and reflection.</p>
         <p className="muted">Your data never leaves this device.</p>
         <Link to="/record" className="button link-btn">

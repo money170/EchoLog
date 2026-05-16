@@ -1,4 +1,4 @@
-const SETTINGS_KEY = 'speechjournal-settings'
+const SETTINGS_KEY = 'echolog-settings'
 
 export interface AppSettings {
   hasCompletedPrivacyOnboarding: boolean
